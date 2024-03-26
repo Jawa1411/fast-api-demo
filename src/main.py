@@ -19,12 +19,4 @@ async def root():
 
 @app.get("/api/get/name")
 async def get_name(name: str):
-    # env = getenv("Name")
     return {"name": name, "env_name": env}
-
-
-def getenv(key, requires=True):
-    value = os.environ.get(key)
-    if value is None and Required:
-        raise RuntimeError(f"Missing required config: %{key}")
-    return value
