@@ -1,14 +1,15 @@
 from fastapi import FastAPI
 from fastapi_utilities import repeat_every
-from src.cronjob.cronjob import CronJob
+# from src.cronjob.cronjob import CronJob
 
 app = FastAPI()
 
-cronJob = CronJob()
+# cronJob = CronJob()
 @app.on_event('startup')
 @repeat_every(seconds=5)
 def cronjob():
-    cronJob.start()
+    # cronJob.start()
+    print("Cronjob Executed!!")
 
 @app.get("/")
 async def root():
