@@ -23,7 +23,7 @@ COPY ./requirements.txt /code/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-COPY ./src /code/app
+COPY ./app /code/app
 
 RUN pip install scipy scikit-image scikit-learn opencv-python-headless
 
@@ -32,5 +32,5 @@ RUN pip install --no-cache-dir --force-reinstall 'GDAL[numpy]==3.6.2'
 
 # EXPOSE 80
 
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
 # CMD [ "gunicorn", "app.main:app" ]
