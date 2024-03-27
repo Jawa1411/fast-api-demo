@@ -1,5 +1,5 @@
 import logging
-
+from src.database import getenv
 
 class CronJob:
     def __init__(self):
@@ -8,4 +8,5 @@ class CronJob:
     
     
     def start(self):
-        self.logger.info("Cronjob Started!!!")
+        name = getenv("NAME")
+        self.logger.info(f"Cronjob Started!!! {name}")

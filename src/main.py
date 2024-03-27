@@ -2,8 +2,7 @@ import logging
 from fastapi import FastAPI
 from fastapi_utilities import repeat_every
 from src.cronjob.cronjob import CronJob
-import os
-from typing_extensions import Required
+from src.database import getenv
 
 app = FastAPI()
 
@@ -28,9 +27,3 @@ async def get_name(name: str):
     env_name = getenv("NAME")
     logger.info(f"After getting env: {env_name}")
     return {"name": name, "env_name":env_name}
-
-def getenv(key, requires=True):
-    value = os.environ.get(key)
-    if value is None and Required:
-        raise RuntimeError(f"Missing required config: %{key}")
-    return value
