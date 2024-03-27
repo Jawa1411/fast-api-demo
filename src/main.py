@@ -16,7 +16,7 @@ logger = logging.getLogger()
 def cronjob():
     # cronJob.start()
     logger.info("Cronjob Started")
-    print("cronjob started")
+    # print("cronjob started")
     
 
 @app.get("/")
@@ -26,4 +26,13 @@ async def root():
 
 @app.get("/api/get/name")
 async def get_name(name: str):
-    return {"name": name}
+    logger.info("Before getting env")
+    env_name = getenv("NAME")
+    logger.info(f"After getting env: {env_name}")
+    return {"name": name, "env_name":env_name}
+
+def getenv(key, requires=True):
+    value = os.environ.get(key)
+    if value is None and Required:
+        raise RuntimeError(f"Missing required config: %{key}")
+    return value
