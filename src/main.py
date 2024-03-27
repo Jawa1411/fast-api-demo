@@ -1,3 +1,4 @@
+import logging
 from fastapi import FastAPI
 from fastapi_utilities import repeat_every
 # from src.cronjob.cronjob import CronJob
