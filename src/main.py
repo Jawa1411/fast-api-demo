@@ -19,4 +19,4 @@ async def root():
 
 @app.get("/api/get/name")
 async def get_name(name: str):
-    return {"name": name, "env_name": env}
+    return {"name": name}
