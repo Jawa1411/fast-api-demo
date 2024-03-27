@@ -6,12 +6,17 @@ from typing_extensions import Required
 
 app = FastAPI()
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger()
+
 # cronJob = CronJob()
 @app.on_event('startup')
 @repeat_every(seconds=5)
 def cronjob():
     # cronJob.start()
+    logger.info("Cronjob Started")
     print("cronjob started")
+    
 
 @app.get("/")
 async def root():
