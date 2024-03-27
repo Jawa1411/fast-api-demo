@@ -30,4 +30,4 @@ COPY ./src /code/src
 # To fix the ImportError: cannot import name '_gdal_array' from 'osgeo' on ReadAsArray()
 # RUN pip install --no-cache-dir --force-reinstall 'GDAL[numpy]==3.6.2' 
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80"]
